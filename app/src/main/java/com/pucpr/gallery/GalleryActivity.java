@@ -6,17 +6,14 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class GalleryActivity extends AppCompatActivity {
     // Variables
     ImageView imageViewGallery;
     TextView textViewIdentifier;
-    TextView textViewTittle;
+    TextView textViewTitle;
     int selectedImage = 0;
     String[] images = new String[]{"squirtle","butterfree","charizard","eevee","vaporeon"};
 
@@ -28,16 +25,18 @@ public class GalleryActivity extends AppCompatActivity {
         // Instancing variables
         imageViewGallery = findViewById(R.id.imageViewGallery);
         textViewIdentifier = findViewById(R.id.textViewIdentifier);
-        textViewTittle = findViewById(R.id.textViewTittle);
+        textViewTitle = findViewById(R.id.textViewTitle);
 
-        // Place array position and length on identifier
+        // Setting array position and length on identifier
         textViewIdentifier.setText(selectedImage+1+"/"+images.length);
+        // Setting title according to image displayed
+        textViewTitle.setText(images[selectedImage].toUpperCase());
 
-        // Get extra value (username) from goToGallery intent
+        // Set GalleryActivity title with extra value (username) from goToGallery intent
         Bundle extras = getIntent().getExtras();
         if (extras != null){
             String user = extras.getString("username");
-            textViewTittle.setText("Hello "+user);
+            setTitle("Hello "+user);
         }
     }
 
@@ -56,7 +55,10 @@ public class GalleryActivity extends AppCompatActivity {
                 d = getResources().getDrawable(getResources().getIdentifier(images[selectedImage],
                         "drawable", getPackageName()),this.getTheme());
                 imageViewGallery.setImageDrawable(d);
+                // Setting array position and length on identifier
                 textViewIdentifier.setText(selectedImage+1+"/"+images.length);
+                // Setting title according to image displayed
+                textViewTitle.setText(images[selectedImage].toUpperCase());
                 break;
             // Button Previous
             case (R.id.buttonPreviousImage):
@@ -68,7 +70,10 @@ public class GalleryActivity extends AppCompatActivity {
                 d = getResources().getDrawable(getResources().getIdentifier(images[selectedImage],
                         "drawable", getPackageName()),this.getTheme());
                 imageViewGallery.setImageDrawable(d);
+                // Setting array position and length on identifier
                 textViewIdentifier.setText(selectedImage+1+"/"+images.length);
+                // Setting title according to image displayed
+                textViewTitle.setText(images[selectedImage].toUpperCase());
                 break;
         }
 
