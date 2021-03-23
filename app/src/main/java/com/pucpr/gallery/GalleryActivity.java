@@ -47,7 +47,7 @@ public class GalleryActivity extends AppCompatActivity {
         switch (view.getId()){
             // Button Next :: Loop stack
             case R.id.buttonNextImage:
-                if(selectedImage >=0 && selectedImage < 4){
+                if(selectedImage >=0 && selectedImage < (images.length-1)){
                     selectedImage++;
                 }else{
                     selectedImage = 0;
@@ -56,22 +56,22 @@ public class GalleryActivity extends AppCompatActivity {
                         "drawable", getPackageName()),this.getTheme());
                 imageViewGallery.setImageDrawable(d);
                 // Setting array position and length on identifier
-                textViewIdentifier.setText(selectedImage+1+"/"+images.length);
+                textViewIdentifier.setText((selectedImage+1)+"/"+images.length);
                 // Setting title according to image displayed
                 textViewTitle.setText(images[selectedImage].toUpperCase());
                 break;
             // Button Previous :: Loop stack
             case (R.id.buttonPreviousImage):
-                if(selectedImage >0 && selectedImage <= 4){
+                if(selectedImage >0 && selectedImage <= (images.length-1)){
                     selectedImage--;
                 }else{
-                    selectedImage = 4;
+                    selectedImage = (images.length-1);
                 }
                 d = getResources().getDrawable(getResources().getIdentifier(images[selectedImage],
                         "drawable", getPackageName()),this.getTheme());
                 imageViewGallery.setImageDrawable(d);
                 // Setting array position and length on identifier
-                textViewIdentifier.setText(selectedImage+1+"/"+images.length);
+                textViewIdentifier.setText((selectedImage+1)+"/"+images.length);
                 // Setting title according to image displayed
                 textViewTitle.setText(images[selectedImage].toUpperCase());
                 break;
