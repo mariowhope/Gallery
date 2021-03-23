@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Gallery</string>
+    <string name="main_username">Username</string>
+    <string name="main_password">Password</string>
+    <string name="main_logo_description">PUCPR</string>
+    <string name="main_login">Log In</string>
+    <string name="main_sign_in">Sign In</string>
+    <string name="button_next">→</string>
+    <string name="button_previous">←</string>
+    <string name="gallery_array">Image: </string>
+</resources>
