@@ -7,5 +7,6 @@
     <string name="main_sign_in">Sign In</string>
     <string name="button_next">→</string>
     <string name="button_previous">←</string>
-    <string name="gallery_array">Image: </string>
+    <string name="gallery_array">/</string>
+    <string name="image_description">Images gallery</string>
 </resources>

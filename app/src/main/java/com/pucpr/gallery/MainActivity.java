@@ -1,5 +1,6 @@
 package com.pucpr.gallery;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    // Variables
     EditText editTextUsername;
     EditText editTextPassword;
     Button buttonLogIn;
@@ -22,30 +24,42 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        //getActionBar().hide();
+        // Instancing variables
         editTextUsername =  findViewById(R.id.editTextUsername);
         editTextPassword =  findViewById(R.id.editTextPassword);
         buttonLogIn = findViewById(R.id.buttonLogIn);
         buttonSignIn = findViewById(R.id.buttonSignIn);
     }
 
+    // Login method
     public void onClickLogIn (View view){
-        Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
-        intent.putExtra("data",usernameHC);
-        startActivity(intent);
+        // Check user credentials :: Hardcoded
+        // Credentials are null: Alert
         if(usernameHC.isEmpty() && passwordHC.isEmpty()){
-            //TODO: Prompt to register user/pw;
-        }else if(editTextUsername.toString().equals(usernameHC) && editTextPassword.toString().equals(passwordHC)){
-            //TODO: Intent to activity-gallery;
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Attention!");
+            builder.setMessage("Register an username and password first!");
+            builder.setPositiveButton(android.R.string.ok,null);
+            builder.create().show();
+
+        // Credentials match: Proceed to next Activity
+        }else if(editTextUsername.getText().toString().equals(usernameHC) && editTextPassword.getText().toString().equals(passwordHC)){
+            Intent goToGallery = new Intent(MainActivity.this, GalleryActivity.class);
+            goToGallery.putExtra("username",usernameHC);
+            startActivity(goToGallery);
+
+        // Credentials doesn't match: Alert
         }else {
-            //TODO: Prompt wrong credentials;
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Attention!");
+            builder.setMessage("User and password doesn't match.");
+            builder.setPositiveButton(android.R.string.ok,null);
+            builder.create().show();
         }
     }
-
+    // Register credentials :: Hardcoded - No security
     public void onClickSignIn (View view){
-        usernameHC = editTextUsername.toString();
-        passwordHC = editTextPassword.toString();
-        Toast.makeText(MainActivity.this, usernameHC+"-"+passwordHC,Toast.LENGTH_LONG).show();
+        usernameHC = editTextUsername.getText().toString();
+        passwordHC = editTextPassword.getText().toString();
     }
 }
