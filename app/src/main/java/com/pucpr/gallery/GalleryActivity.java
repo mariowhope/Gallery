@@ -45,7 +45,7 @@ public class GalleryActivity extends AppCompatActivity {
     public void navigationButtonClicked (View view) {
         Drawable d;
         switch (view.getId()){
-            // Button Next
+            // Button Next :: Loop stack
             case R.id.buttonNextImage:
                 if(selectedImage >=0 && selectedImage < 4){
                     selectedImage++;
@@ -60,7 +60,7 @@ public class GalleryActivity extends AppCompatActivity {
                 // Setting title according to image displayed
                 textViewTitle.setText(images[selectedImage].toUpperCase());
                 break;
-            // Button Previous
+            // Button Previous :: Loop stack
             case (R.id.buttonPreviousImage):
                 if(selectedImage >0 && selectedImage <= 4){
                     selectedImage--;

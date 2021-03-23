@@ -9,4 +9,6 @@
     <string name="button_previous">←</string>
     <string name="gallery_array">/</string>
     <string name="image_description">Images gallery</string>
+    <string name="login_wrong_credentials">Wrong credentials</string>
+    <string name="login_register">First register an user and password</string>
 </resources>

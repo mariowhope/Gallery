@@ -2,10 +2,10 @@ package com.pucpr.gallery;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //remove Title Bar !!After super.OnCreate!!
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
         // Instancing variables
         editTextUsername =  findViewById(R.id.editTextUsername);
@@ -37,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         // Credentials are null: Alert
         if(usernameHC.isEmpty() && passwordHC.isEmpty()){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Attention!");
-            builder.setMessage("Register an username and password first!");
+            builder.setTitle(android.R.string.dialog_alert_title);
+            builder.setMessage(R.string.login_register);
             builder.setPositiveButton(android.R.string.ok,null);
             builder.create().show();
 
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         // Credentials doesn't match: Alert
         }else {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Attention!");
-            builder.setMessage("User and password doesn't match.");
+            builder.setTitle(android.R.string.dialog_alert_title);
+            builder.setMessage(R.string.login_wrong_credentials);
             builder.setPositiveButton(android.R.string.ok,null);
             builder.create().show();
         }
